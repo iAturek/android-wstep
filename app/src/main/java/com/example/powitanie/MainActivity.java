@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     // pola klasy - dostępne we wszystkich metodach
     private EditText etName;
     private Button btnGreet;
+
+    private Button btnClear;
     private TextView tvResult;
 
     @Override
@@ -32,11 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         // połączenie pól z elementami layoutu - ZAWSZE po setContentView
         etName = findViewById(R.id.etName);
+        btnClear = findViewById(R.id.btnClear);
         btnGreet = findViewById(R.id.btnGreet);
         tvResult = findViewById(R.id.tvResult);
 
         // co ma się stać po kliknięciu
         btnGreet.setOnClickListener(v -> greet());
+
+        btnClear.setOnClickListener(v -> clear());
     }
 
     private void greet() {
@@ -48,5 +53,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         tvResult.setText(getString(R.string.greeting, name));
+    }
+
+    private void clear(){
+        String text = etName.getText().toString().trim();
+        etName.setText("");
     }
 }
