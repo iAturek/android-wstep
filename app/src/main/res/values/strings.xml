@@ -4,6 +4,8 @@
     <string name="hint_name">Wpisz swoje imię</string>
     <string name="btn_clear">Wyczyść</string>
     <string name="btn_greet">Przywitaj się</string>
+    <string name="cb_shout">Krzyczymy?</string>
     <string name="greeting">Cześć, %1$s!</string>
+    <string name="shout_greeting">CZEŚĆ, %1$s!</string>
     <string name="error_empty_name">Najpierw wpisz imię</string>
 </resources>

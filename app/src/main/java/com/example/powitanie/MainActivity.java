@@ -2,6 +2,7 @@ package com.example.powitanie;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGreet;
 
     private Button btnClear;
+
+    private CheckBox cbShout;
     private TextView tvResult;
 
     @Override
@@ -36,23 +39,29 @@ public class MainActivity extends AppCompatActivity {
         etName = findViewById(R.id.etName);
         btnClear = findViewById(R.id.btnClear);
         btnGreet = findViewById(R.id.btnGreet);
+        cbShout = findViewById(R.id.cbShout);
         tvResult = findViewById(R.id.tvResult);
 
         // co ma się stać po kliknięciu
         btnGreet.setOnClickListener(v -> greet());
 
         btnClear.setOnClickListener(v -> clear());
+
     }
 
     private void greet() {
         String name = etName.getText().toString().trim();
+        Boolean zaznaczone = cbShout.isChecked();
 
         if (name.isEmpty()) {
             Toast.makeText(this, R.string.error_empty_name, Toast.LENGTH_SHORT).show();
             return;
         }
-
-        tvResult.setText(getString(R.string.greeting, name));
+        if(cbShout.isChecked()){
+            tvResult.setText(getString(R.string.shout_greeting, name.toUpperCase()));
+        }else{
+            tvResult.setText(getString(R.string.greeting, name));
+        }
     }
 
     private void clear(){
